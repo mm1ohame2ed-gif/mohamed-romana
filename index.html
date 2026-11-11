@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>محمد ورومانة</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#ffe4ec,#f8d7e5 55%,#fceef3);font-family:Tahoma,Arial,sans-serif;color:#63384a}
+.wrap{width:min(100%,430px);text-align:center}
+h1{font-size:clamp(27px,7vw,38px);margin:0 0 10px}
+.sub{margin:0 0 28px;color:#8a5a6d}
+.envelope{position:relative;height:230px;margin:0 auto 22px;max-width:340px;cursor:pointer;filter:drop-shadow(0 14px 18px #a75d7933)}
+.env{position:absolute;inset:45px 0 0;background:#e88ba8;border-radius:12px}
+.env:before{content:"";position:absolute;inset:0;background:#f3a9bf;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:12px}
+.flap{position:absolute;top:45px;left:0;width:100%;height:130px;background:#f7bfd0;clip-path:polygon(0 0,100% 0,50% 72%);transform-origin:top;transition:transform .65s;z-index:3}
+.letter{position:absolute;z-index:2;left:8%;right:8%;top:65px;min-height:125px;padding:18px 14px;background:#fffafc;border-radius:10px;transition:transform .7s,top .7s;box-shadow:0 4px 12px #8b466022}
+.letter p{margin:5px 0;line-height:1.9;font-size:16px}
+.open .flap{transform:rotateX(180deg);z-index:1}
+.open .letter{top:0;transform:translateY(-35px)}
+button{border:0;border-radius:999px;padding:14px 28px;background:#c94f7a;color:white;font-size:17px;font-weight:bold;cursor:pointer}
+.note{margin-top:18px;font-size:13px;color:#946779}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>محمد ورومانة</h1>
+  <p class="sub">رسالة صغيرة مخصوص ليكي</p>
+  <div class="envelope" id="env" role="button" tabindex="0" aria-label="افتح الظرف">
+    <div class="env"></div>
+    <div class="letter">
+      <p>إلى رومانة 🌷</p>
+      <p>وجودك بيخلّي الأيام ألطف، وابتسامتك بتضيف للحياة لون جميل.</p>
+      <p>من محمد</p>
+    </div>
+    <div class="flap"></div>
+  </div>
+  <button id="open">افتحي الرسالة</button>
+  <p class="note">اضغطي على الظرف أو الزر لفتح الرسالة</p>
+</main>
+<script>
+const env=document.getElementById('env');
+function toggle(){env.classList.toggle('open');}
+document.getElementById('open').addEventListener('click',toggle);
+env.addEventListener('click',toggle);
+env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+</script>
+</body>
+</html>
